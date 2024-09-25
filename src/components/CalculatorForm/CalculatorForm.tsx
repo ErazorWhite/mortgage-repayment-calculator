@@ -1,52 +1,80 @@
 import {SubmitErrorHandler, SubmitHandler, useForm} from "react-hook-form";
 import {useState} from "react";
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import {TextInput} from "../TextInput/TextInput.tsx";
+import {RadioGroup} from "../RadioGroup/RadioGroup.tsx";
+import {Results} from "../Results/Results.tsx";
 
 // # TODO
-//     # Break into sub-components to improve code readability;
-//     # Validation;
+//     # DONE # Break into sub-components to improve code readability;
+//     # IN PROGRESS # Validation;
 //     # Styling;
 //     # Icons;
 //     # Animations;
 
-enum mortgageType {
-    repayment,
-    interestOnly
+enum MortgageType {
+    Repayment = 'Repayment',
+    InterestOnly = 'Interest Only',
 }
 
-interface MortgageData {
+export interface MortgageData {
     amount: number;
     term: number;
     rate: number;
-    type: mortgageType;
+    type: MortgageType;
 }
+
+const MortgageDataSchema = yup
+    .object({
+        amount: yup.number().positive().integer().required("required").typeError("123"),
+        term: yup.number().positive().integer().required(),
+        rate: yup.number().positive().integer().required(),
+        type: yup.mixed<MortgageType>()
+            .oneOf(Object.values(MortgageType), 'Please select a mortgage type')
+            .required('Mortgage type is required'),
+
+    })
+    .required()
+
+
 
 export const CalculatorForm = () => {
 
     const [monthlyRepayment, setMonthlyRepayment] = useState<number | null>(null);
     const [totalRepayment, setTotalRepayment] = useState<number | null>(null);
-    const {register, handleSubmit, reset, formState: {errors}} = useForm<MortgageData>();
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: {errors}
+    } = useForm<MortgageData>({resolver: yupResolver(MortgageDataSchema)});
 
-    const onSubmit: SubmitHandler<MortgageData> = ({amount, term, rate}) => {
+    const onSubmit: SubmitHandler<MortgageData> = ({amount, term, rate, type}) => {
         const mortgageTermMonths = term * 12;
         const monthlyInterestRate = (rate / 100) / 12;
 
-        const numerator = amount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, mortgageTermMonths);
-        const denominator = Math.pow(1 + monthlyInterestRate, mortgageTermMonths) - 1;
+        let monthlyPayment: number;
+        let totalRepayment: number;
 
-        const monthlyPayment = numerator / denominator;
-        const totalRepayment = monthlyPayment * mortgageTermMonths;
+        if (type === MortgageType.Repayment) {
+            const numerator = amount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, mortgageTermMonths);
+            const denominator = Math.pow(1 + monthlyInterestRate, mortgageTermMonths) - 1;
+
+            monthlyPayment = numerator / denominator;
+            totalRepayment = monthlyPayment * mortgageTermMonths;
+        } else {
+            monthlyPayment = (amount * monthlyInterestRate);
+            totalRepayment = monthlyPayment * mortgageTermMonths;
+        }
 
         console.log("Your monthly repayment: £" + monthlyPayment.toFixed(2));
         console.log("Total you'll repay over the term: £" + totalRepayment.toFixed(2));
 
-        setMonthlyRepayment(monthlyPayment);
-        setTotalRepayment(totalRepayment);
+        setMonthlyRepayment(parseFloat(monthlyPayment.toFixed(2)));
+        setTotalRepayment(parseFloat(totalRepayment.toFixed(2)));
     };
     const onError: SubmitErrorHandler<MortgageData> = (data) => console.log(data);
-
-    const isName = () => {
-        return true;
-    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit, onError)}>
@@ -58,51 +86,44 @@ export const CalculatorForm = () => {
                 </button>
             </div>
 
-            <label htmlFor="amount">Mortgage Amount</label>
-            <input type="text" {...register('amount', {required: true, validate: isName})}/>
-            {errors.amount && <p>Error</p>}
+            <TextInput
+                label="Mortgage Amount"
+                name="amount"
+                register={register}
+                error={errors.amount}
+            />
 
-            <label htmlFor="term">Mortgage Term</label>
-            <input type="text" {...register('term', {required: true})}/>
+            <TextInput
+                label="Mortgage Term"
+                name="term"
+                register={register}
+                error={errors.term}
+            />
 
-            <label htmlFor="rate">Interest Rate</label>
-            <input type="text" {...register('rate', {required: true})}/>
+            <TextInput
+                label="Interest Rate"
+                name="rate"
+                register={register}
+                error={errors.rate}
+            />
 
-            <legend>Mortgage Type</legend>
+            <RadioGroup
+                label="Mortgage Type"
+                name="type"
+                options={[
+                    {label: 'Repayment', value: 'Repayment'},
+                    {label: 'Interest Only', value: 'Interest Only'},
+                ]}
+                register={register}
+                error={errors.type}
 
-            <label htmlFor="repayment">
-                <input {...register("type", {required: true})} type="radio" id="repayment" value="Repayment"/>
-                Repayment
-            </label>
-
-            <label htmlFor="interestOnly">
-                <input {...register("type", {required: true})} type="radio" id="interestOnly"
-                       value="Interest Only"/>
-                Interest Only
-            </label>
+            />
 
 
             <button>Calculate Repayments</button>
 
-            {monthlyRepayment ?
-                <div>
-                    <p>Your monthly repayments</p>
-                    <p>£{monthlyRepayment.toFixed(2)}</p>
+            <Results monthlyRepayment={monthlyRepayment} totalRepayment={totalRepayment}/>
 
-                    <p>Total you'll repay over the term</p>
-                    <p>£{totalRepayment?.toFixed(2)}</p>
-                    <h2>Results shown here</h2>
-                    <p>Complete the form and click "calculate repayments" to see what your monthly repayments would
-                        be.</p>
-                </div>
-                :
-                <div>
-                    <h2>Your results</h2>
-                    <p>Your results are shown below based on the information you provided. To adjust the results, edit
-                        the
-                        form and click “calculate repayments” again.</p>
-                </div>
-            }
         </form>
     )
 }
