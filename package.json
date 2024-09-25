@@ -23,8 +23,8 @@
   "devDependencies": {
     "@csstools/postcss-global-data": "^3.0.0",
     "@eslint/js": "^9.9.0",
-    "@linaria/react": "^6.2.1",
     "@linaria/vite": "^5.0.4",
+    "@linaria/react": "^6.2.1",
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
     "@types/react": "^18.3.8",
