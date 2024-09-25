@@ -1,18 +1,4 @@
-import {FieldError, UseFormRegister} from 'react-hook-form';
-import {MortgageData} from "../CalculatorForm/CalculatorForm.tsx";
-
-interface RadioOption {
-    label: string;
-    value: string;
-}
-
-interface RadioGroupProps {
-    label: string;
-    name: keyof MortgageData;
-    options: RadioOption[];
-    register: UseFormRegister<MortgageData>;
-    error?: FieldError;
-}
+import {RadioGroupProps} from "../../global/types.ts";
 
 export const RadioGroup = ({label, name, options, register, error}: RadioGroupProps) => (
     <div>
