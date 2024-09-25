@@ -2,9 +2,12 @@ import {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
 import './index.css'
 import {CalculatorForm} from "./components/CalculatorForm/CalculatorForm.tsx";
+import {Container} from "./components/Containter/Container.tsx";
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <CalculatorForm/>
+        <Container>
+            <CalculatorForm/>
+        </Container>
     </StrictMode>,
 )
