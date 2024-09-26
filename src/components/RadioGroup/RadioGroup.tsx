@@ -1,15 +1,15 @@
 import {RadioGroupProps} from "../../global/types.ts";
-import {CheckMark, Li, RadioInput, RadioLabel, RadioLegend} from "./RadioGroup.styles";
+import {CheckMark, Li, RadioInput, RadioLabel, RadioLegend, StyledRadio} from "./RadioGroup.styles";
 
 export const RadioGroup = ({label, name, options, register, error}: RadioGroupProps) => {
 
     return (
-        <div>
+        <StyledRadio>
             <RadioLegend>{label}</RadioLegend>
             <ul>
                 {options.map((option) => (
-                    <Li>
-                        <RadioLabel key={option.value} htmlFor={option.value}>
+                    <Li key={option.value}>
+                        <RadioLabel htmlFor={option.value}>
                             <RadioInput
                                 {...register(name)}
                                 type="radio"
@@ -24,6 +24,6 @@ export const RadioGroup = ({label, name, options, register, error}: RadioGroupPr
             </ul>
             {error && <p>{error.message}</p>}
 
-        </div>
+        </StyledRadio>
     )
 };

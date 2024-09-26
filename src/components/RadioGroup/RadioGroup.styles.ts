@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import {typography} from "../../global/theme";
 
+export const StyledRadio = styled.div`
+    padding-bottom: 24px;
+`
+
 export const RadioLegend = styled.legend`
     ${typography.preset4};
     padding-bottom: 12px;
