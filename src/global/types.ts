@@ -16,12 +16,18 @@ export interface MortgageData {
 
 // Text input
 
+export enum Direction {
+    prefix = 'prefix',
+    suffix = 'suffix'
+}
+
 export interface TextInputProps {
     label: string;
     name: keyof MortgageData;
     register: UseFormRegister<MortgageData>;
     error?: FieldError;
     type?: string;
+    decoratorOptions?: {text: string, dir?: Direction};
     registerOptions?: object;
 }
 

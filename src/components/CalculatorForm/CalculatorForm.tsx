@@ -2,12 +2,13 @@ import {SubmitErrorHandler, SubmitHandler, useForm} from "react-hook-form";
 import {useState} from "react";
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import {MortgageData, MortgageType} from "../../global/types.ts";
+import {Direction, MortgageData, MortgageType} from "../../global/types.ts";
 import {TextInput} from "../TextInput/TextInput.tsx";
 import {RadioGroup} from "../RadioGroup/RadioGroup.tsx";
 import {Results} from "../Results/Results.tsx";
 import {numberFieldValidator} from "../utilities/numberFieldValidator.ts";
 import {mortgageCalc} from "../utilities/mortgageCalc.ts";
+import {ClearButton, Form, FormHeader, H1} from "./CalculatorForm.styled";
 
 // # TODO
 //     # DONE # Break into sub-components to improve code readability;
@@ -32,6 +33,7 @@ export const CalculatorForm = () => {
     const [totalRepayment, setTotalRepayment] = useState<number | null>(null);
     const {
         register,
+        getValues,
         handleSubmit,
         reset,
         formState: {errors}
@@ -46,25 +48,27 @@ export const CalculatorForm = () => {
     const onError: SubmitErrorHandler<MortgageData> = (data) => console.log(data);
 
     return (
-        <form onSubmit={handleSubmit(onSubmit, onError)}>
-            <div>
-                <h1>Mortgage Calculator</h1>
-                <button type="button" onClick={() => {
+        <Form onSubmit={handleSubmit(onSubmit, onError)}>
+            <FormHeader>
+                <H1>Mortgage Calculator</H1>
+                <ClearButton type="button" onClick={() => {
                     reset()
                 }}>Clear All
-                </button>
-            </div>
+                </ClearButton>
+            </FormHeader>
 
             <TextInput
                 label="Mortgage Amount"
                 name="amount"
                 register={register}
+                decoratorOptions={{text: "£", dir: Direction.prefix}}
                 error={errors.amount}
             />
 
             <TextInput
                 label="Mortgage Term"
                 name="term"
+                decoratorOptions={{text: "years", dir: Direction.suffix}}
                 register={register}
                 error={errors.term}
             />
@@ -72,6 +76,7 @@ export const CalculatorForm = () => {
             <TextInput
                 label="Interest Rate"
                 name="rate"
+                decoratorOptions={{text: "%", dir: Direction.suffix}}
                 register={register}
                 error={errors.rate}
             />
@@ -92,6 +97,6 @@ export const CalculatorForm = () => {
 
             <Results monthlyRepayment={monthlyRepayment} totalRepayment={totalRepayment}/>
 
-        </form>
+        </Form>
     )
 }
