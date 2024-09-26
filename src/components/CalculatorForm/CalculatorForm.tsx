@@ -9,13 +9,7 @@ import {Results} from "../Results/Results.tsx";
 import {numberFieldValidator} from "../utilities/numberFieldValidator.ts";
 import {mortgageCalc} from "../utilities/mortgageCalc.ts";
 import {ClearButton, Form, FormHeader, H1} from "./CalculatorForm.styled";
-
-// # TODO
-//     # DONE # Break into sub-components to improve code readability;
-//     # DONE # Validation;
-//     # Styling;
-//     # Icons;
-//     # Animations;
+import {CalculateButton} from "../CalculateButton/CalculateButton";
 
 const MortgageDataSchema = yup
     .object({
@@ -33,7 +27,6 @@ export const CalculatorForm = () => {
     const [totalRepayment, setTotalRepayment] = useState<number | null>(null);
     const {
         register,
-        getValues,
         handleSubmit,
         reset,
         formState: {errors}
@@ -48,57 +41,59 @@ export const CalculatorForm = () => {
     const onError: SubmitErrorHandler<MortgageData> = (data) => console.log(data);
 
     return (
-        <Form onSubmit={handleSubmit(onSubmit, onError)}>
-            <FormHeader>
-                <H1>Mortgage Calculator</H1>
-                <ClearButton type="button" onClick={() => {
-                    setMonthlyRepayment(null);
-                    setTotalRepayment(null);
-                    reset()
-                }}>Clear All
-                </ClearButton>
-            </FormHeader>
+        <>
+            <Form onSubmit={handleSubmit(onSubmit, onError)}>
+                <FormHeader>
+                    <H1>Mortgage Calculator</H1>
+                    <ClearButton type="button" onClick={() => {
+                        setMonthlyRepayment(null);
+                        setTotalRepayment(null);
+                        reset()
+                    }}>Clear All
+                    </ClearButton>
+                </FormHeader>
 
-            <TextInput
-                label="Mortgage Amount"
-                name="amount"
-                register={register}
-                decoratorOptions={{text: "£", dir: Direction.prefix}}
-                error={errors.amount}
-            />
+                <TextInput
+                    label="Mortgage Amount"
+                    name="amount"
+                    register={register}
+                    decoratorOptions={{text: "£", dir: Direction.prefix}}
+                    error={errors.amount}
+                />
 
-            <TextInput
-                label="Mortgage Term"
-                name="term"
-                decoratorOptions={{text: "years", dir: Direction.suffix}}
-                register={register}
-                error={errors.term}
-            />
+                <TextInput
+                    label="Mortgage Term"
+                    name="term"
+                    decoratorOptions={{text: "years", dir: Direction.suffix}}
+                    register={register}
+                    error={errors.term}
+                />
 
-            <TextInput
-                label="Interest Rate"
-                name="rate"
-                decoratorOptions={{text: "%", dir: Direction.suffix}}
-                register={register}
-                error={errors.rate}
-            />
+                <TextInput
+                    label="Interest Rate"
+                    name="rate"
+                    decoratorOptions={{text: "%", dir: Direction.suffix}}
+                    register={register}
+                    error={errors.rate}
+                />
 
-            <RadioGroup
-                label="Mortgage Type"
-                name="type"
-                options={[
-                    {label: 'Repayment', value: 'Repayment'},
-                    {label: 'Interest Only', value: 'Interest Only'},
-                ]}
-                register={register}
-                error={errors.type}
+                <RadioGroup
+                    label="Mortgage Type"
+                    name="type"
+                    options={[
+                        {label: 'Repayment', value: 'Repayment'},
+                        {label: 'Interest Only', value: 'Interest Only'},
+                    ]}
+                    register={register}
+                    error={errors.type}
 
-            />
+                />
 
-            <button>Calculate Repayments</button>
+                <CalculateButton>Calculate Repayments</CalculateButton>
+
+            </Form>
 
             <Results monthlyRepayment={monthlyRepayment} totalRepayment={totalRepayment}/>
-
-        </Form>
+        </>
     )
 }
