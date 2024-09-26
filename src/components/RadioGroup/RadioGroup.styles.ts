@@ -45,7 +45,7 @@ export const RadioInput = styled.input`
             left: 50%;
             width: 10px;
             height: 10px;
-            background-color: var(--color-lime); /* Цвет внутреннего кружка */
+            background-color: var(--color-lime);
             border-radius: 50%;
             transform: translate(-50%, -50%);
         }
