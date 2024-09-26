@@ -52,6 +52,8 @@ export const CalculatorForm = () => {
             <FormHeader>
                 <H1>Mortgage Calculator</H1>
                 <ClearButton type="button" onClick={() => {
+                    setMonthlyRepayment(null);
+                    setTotalRepayment(null);
                     reset()
                 }}>Clear All
                 </ClearButton>
