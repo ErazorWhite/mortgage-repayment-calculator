@@ -16,6 +16,7 @@
   /* Colors */
   --color-white: #ffffff; /* White */
   --color-lime: #D8DB2F; /* Lime */
+  --color-lime-opacity: rgba(216, 219, 47, .15);
   --color-state-900: #133041; /* State 900 */
   --color-state-700: #4E6E7E; /* State 700 */
   --color-state-500: #6B94A8; /* State 500 */
