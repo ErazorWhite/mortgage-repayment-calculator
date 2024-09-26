@@ -1,4 +1,5 @@
-import {styled} from "@linaria/react";
+import styled from "styled-components";
+import {TABLET_BP, DESKTOP_BP} from "../../global/breakpoints";
 
 export const StyledContainer = styled.div`
     max-width: 380px;
@@ -8,12 +9,12 @@ export const StyledContainer = styled.div`
     align-items: center;
     align-content: center;
 
-    @media (--tablet-bp) {
+    @media screen and ${TABLET_BP} {
         max-width: 768px;
         padding: 0 32px;
     }
 
-    @media (--desktop-bp) {
+    @media screen and ${DESKTOP_BP} {
         max-width: 1440px;
     }
 `

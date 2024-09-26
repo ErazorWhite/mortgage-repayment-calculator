@@ -1,4 +1,4 @@
-import {StyledContainer} from "./Container.styled.ts";
+import {StyledContainer} from "./Container.styled";
 import {FC, ReactNode} from "react";
 
 interface ContainerProps {
