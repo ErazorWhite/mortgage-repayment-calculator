@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
-    "@linaria/core": "^6.2.0",
-    "@linaria/react": "^6.2.1",
     "modern-normalize": "^3.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -23,10 +21,6 @@
   "devDependencies": {
     "@csstools/postcss-global-data": "^3.0.0",
     "@eslint/js": "^9.9.0",
-    "@linaria/vite": "^5.0.4",
-    "@linaria/react": "^6.2.1",
-    "@babel/preset-react": "^7.24.7",
-    "@babel/preset-typescript": "^7.24.7",
     "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
