@@ -1,4 +1,5 @@
 import {FieldError, UseFormRegister} from "react-hook-form";
+import {ReactNode} from "react";
 
 // CalculatorForm Data
 
@@ -44,4 +45,17 @@ export interface RadioGroupProps {
     options: RadioOption[];
     register: UseFormRegister<MortgageData>;
     error?: FieldError;
+}
+
+// Results
+
+export interface ResultsProps {
+    monthlyRepayment: number | null;
+    totalRepayment: number | null;
+}
+
+// Children
+
+export interface Props {
+    children?: ReactNode
 }
