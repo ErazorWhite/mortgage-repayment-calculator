@@ -13,10 +13,10 @@ export const CalculatedResults = ({monthlyRepayment, totalRepayment}: ResultsPro
 
             <CalculatedBox>
                 <P>Your monthly repayments</P>
-                <H3>£{monthlyRepayment}</H3>
+                <H3>£{Intl.NumberFormat('en-US').format(Number(monthlyRepayment))}</H3>
 
                 <P>Total you'll repay over the term</P>
-                <H4>£{totalRepayment}</H4>
+                <H4>£{Intl.NumberFormat('en-US').format(Number(totalRepayment))}</H4>
             </CalculatedBox>
         </ResultsBox>
     )
