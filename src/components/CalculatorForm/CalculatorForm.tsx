@@ -30,7 +30,7 @@ export const CalculatorForm = () => {
         handleSubmit,
         reset,
         formState: {errors}
-    } = useForm<MortgageData>({resolver: yupResolver(MortgageDataSchema)});
+    } = useForm<MortgageData>({resolver: yupResolver(MortgageDataSchema), mode: "onTouched"});
 
     const onSubmit: SubmitHandler<MortgageData> = ({amount, term, rate, type}) => {
         let {monthlyPayment, totalRepayment} = mortgageCalc(term, rate, type, amount);
@@ -38,6 +38,13 @@ export const CalculatorForm = () => {
         setMonthlyRepayment(parseFloat(monthlyPayment.toFixed(2)));
         setTotalRepayment(parseFloat(totalRepayment.toFixed(2)));
     };
+
+    const handleClear = () => {
+        setMonthlyRepayment(null);
+        setTotalRepayment(null);
+        reset()
+    };
+
     const onError: SubmitErrorHandler<MortgageData> = (data) => console.log(data);
 
     return (
@@ -45,11 +52,7 @@ export const CalculatorForm = () => {
             <Form onSubmit={handleSubmit(onSubmit, onError)}>
                 <FormHeader>
                     <H1>Mortgage Calculator</H1>
-                    <ClearButton type="button" onClick={() => {
-                        setMonthlyRepayment(null);
-                        setTotalRepayment(null);
-                        reset()
-                    }}>Clear All
+                    <ClearButton type="button" onClick={handleClear}>Clear All
                     </ClearButton>
                 </FormHeader>
 
