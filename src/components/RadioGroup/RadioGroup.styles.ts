@@ -26,40 +26,9 @@ export const CheckMark = styled.span`
     background-color: transparent;
     transition: background-color var(--animation);
 `
-export const RadioInput = styled.input`
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-    
-    &:focus + ${CheckMark} {
-        outline: 2px solid black;
-    }
-    
-    &:checked + ${CheckMark} {
-        background-color: var(--color-lime-opacity);
-        border-color: var(--color-lime);
-        
-        &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            background-color: var(--color-lime);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
-    }
-
-`
 
 export const RadioLabel = styled.label`
     ${typography.preset3};
-    position: relative;
     display: flex;
     align-items: center;
     padding: 13px 16px;
@@ -68,15 +37,49 @@ export const RadioLabel = styled.label`
     color: var(--color-state-900);
     cursor: pointer;
     transition: var(--animation);
-    
+
     &:hover {
         border-color: var(--color-lime);
     }
+`;
 
-    &:has(${RadioInput}:checked) {
-        background-color: var(--color-lime-opacity);
-        border-color: var(--color-state-500);
+export const RadioInput = styled.input`
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  
+  &:focus + ${RadioLabel} {
+    outline: 2px solid black;
+  }
+
+  &:checked + ${RadioLabel} {
+    background-color: var(--color-lime-opacity);
+    border-color: var(--color-state-500);
+
+    ${CheckMark} {
+      background-color: var(--color-lime-opacity);
+      border-color: var(--color-lime);
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        background-color: var(--color-lime);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
-`
+  }
+`;
+
+
+
+
 
 

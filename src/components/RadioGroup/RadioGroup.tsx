@@ -9,13 +9,13 @@ export const RadioGroup = ({label, name, options, register, error}: RadioGroupPr
             <ul>
                 {options.map((option) => (
                     <Li key={option.value}>
+                        <RadioInput
+                            {...register(name)}
+                            type="radio"
+                            id={option.value}
+                            value={option.value}
+                        />
                         <RadioLabel htmlFor={option.value}>
-                            <RadioInput
-                                {...register(name)}
-                                type="radio"
-                                id={option.value}
-                                value={option.value}
-                            />
                             <CheckMark/>
                             {option.label}
                         </RadioLabel>
