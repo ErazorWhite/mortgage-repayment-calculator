@@ -1,31 +1,38 @@
 import {SubmitErrorHandler, SubmitHandler, useForm} from "react-hook-form";
 import {useState} from "react";
 import {yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import {Direction, MortgageData, MortgageType} from "../../global/types.ts";
+import {Position, MortgageData, MortgageInput} from "../../global/types.ts";
 import {TextInput} from "../TextInput/TextInput.tsx";
 import {RadioGroup} from "../RadioGroup/RadioGroup.tsx";
 import {Results} from "../Results/Results.tsx";
-import {numberFieldValidator} from "../utilities/numberFieldValidator.ts";
 import {mortgageCalc} from "../utilities/mortgageCalc.ts";
 import {ClearButton, Form, FormHeader, H1} from "./CalculatorForm.styled";
 import {CalculateButton} from "../CalculateButton/CalculateButton";
+import {MortgageDataSchema} from "../utilities/validationSchemas";
 
-const MortgageDataSchema = yup
-    .object({
-        amount: numberFieldValidator("Mortgage amount"),
-        term: numberFieldValidator("Mortgage term"),
-        rate: numberFieldValidator("Interest rate"),
-        type: yup.mixed<MortgageType>()
-            .oneOf(Object.values(MortgageType), 'Please select a mortgage type')
-            .required('Mortgage type is required'),
-    })
-    .required()
+const formFields: Array<MortgageInput> = [
+    {
+        name: 'amount',
+        label: 'Mortgage Amount',
+        decoratorOptions: {text: "£", pos: Position.prefix}
+    },
+    {
+        name: 'term',
+        label: 'Mortgage Term',
+        decoratorOptions: {text: "years", pos: Position.suffix}
+    },
+    {
+        name: 'rate',
+        label: 'Interest Rate',
+        decoratorOptions: {text: "%", pos: Position.suffix}
+    }
+];
 
 export const CalculatorForm = () => {
     const [monthlyRepayment, setMonthlyRepayment] = useState<number | null>(null);
     const [totalRepayment, setTotalRepayment] = useState<number | null>(null);
     const {
+        control,
         register,
         handleSubmit,
         reset,
@@ -56,29 +63,9 @@ export const CalculatorForm = () => {
                     </ClearButton>
                 </FormHeader>
 
-                <TextInput
-                    label="Mortgage Amount"
-                    name="amount"
-                    register={register}
-                    decoratorOptions={{text: "£", dir: Direction.prefix}}
-                    error={errors.amount}
-                />
-
-                <TextInput
-                    label="Mortgage Term"
-                    name="term"
-                    decoratorOptions={{text: "years", dir: Direction.suffix}}
-                    register={register}
-                    error={errors.term}
-                />
-
-                <TextInput
-                    label="Interest Rate"
-                    name="rate"
-                    decoratorOptions={{text: "%", dir: Direction.suffix}}
-                    register={register}
-                    error={errors.rate}
-                />
+                {formFields.map(({...props}) => (
+                    <TextInput key={props.name} control={control} {...props}/>
+                ))}
 
                 <RadioGroup
                     label="Mortgage Type"
@@ -89,7 +76,6 @@ export const CalculatorForm = () => {
                     ]}
                     register={register}
                     error={errors.type}
-
                 />
 
                 <CalculateButton>Calculate Repayments</CalculateButton>

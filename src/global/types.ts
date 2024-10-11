@@ -1,5 +1,5 @@
-import {FieldError, UseFormRegister} from "react-hook-form";
-import {ReactNode} from "react";
+import {Control, FieldError, UseFormRegister} from "react-hook-form";
+import {ReactNode, SyntheticEvent} from "react";
 
 // CalculatorForm Data
 
@@ -17,19 +17,32 @@ export interface MortgageData {
 
 // Text input
 
-export enum Direction {
+export enum Position {
     prefix = 'prefix',
     suffix = 'suffix'
 }
 
+// Input
+
+export interface MortgageInput {
+    name: keyof MortgageData;
+    label: string;
+    decoratorOptions: {
+        text: string;
+        pos: Position;
+    };
+}
+
+export interface InputBoxProps {
+    $content?: string;
+    $position?: 'prefix' | 'suffix';
+}
+
 export interface TextInputProps {
     label: string;
+    control: Control<any>
     name: keyof MortgageData;
-    register: UseFormRegister<MortgageData>;
-    error?: FieldError;
-    type?: string;
-    decoratorOptions?: {text: string, dir?: Direction};
-    registerOptions?: object;
+    decoratorOptions?: {text: string, pos: Position};
 }
 
 // Radio buttons

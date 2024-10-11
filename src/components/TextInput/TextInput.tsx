@@ -1,30 +1,43 @@
-import {Direction, TextInputProps} from "../../global/types.ts";
-import {Decorator, InputBox, StyledInput, TextBox, TextLabel} from "./TextInput.styled";
+import {Position, TextInputProps} from "../../global/types.ts";
+import {InputBox, StyledInput, TextBox, TextLabel} from "./TextInput.styled";
+import {Controller} from "react-hook-form";
+import {forwardRef} from "react";
+import {NumericFormat} from "react-number-format";
+
+const CustomInput = forwardRef((props, ref) => (
+    <StyledInput  {...props}/>
+));
 
 export const TextInput = ({
                               label,
+                              control,
                               name,
-                              register,
-                              error,
-                              type = 'text',
-                              decoratorOptions = {text: "", dir: Direction.prefix},
-                              registerOptions
+                              decoratorOptions = {text: "", pos: Position.prefix},
                           }: TextInputProps) => (
-    <TextBox>
-        <TextLabel htmlFor={name}>{label}</TextLabel>
-        <InputBox>
-            {decoratorOptions.dir === Direction.prefix ?
-                <>
-                    <Decorator>{decoratorOptions.text}</Decorator>
-                    <StyledInput type={type} {...register(name, registerOptions)} />
-                </> :
-                <>
-                    <StyledInput type={type} {...register(name, registerOptions)} />
-                    <Decorator>{decoratorOptions.text}</Decorator>
-                </>
-            }
+    <Controller
+        name={name}
+        control={control}
+        render={({field: {ref, ...rest}, fieldState: {error}}) => (
+            <TextBox>
+                <TextLabel htmlFor={name}>{label}</TextLabel>
+                <InputBox $content={decoratorOptions.text} $position={decoratorOptions.pos}>
 
-        </InputBox>
-        {error && <p>{error.message}</p>}
-    </TextBox>
-);
+                    <NumericFormat
+                        getInputRef={ref}
+                        customInput={CustomInput}
+                        thousandSeparator=','
+                        allowNegative={false}
+                        decimalScale={2}
+                        onValueChange={(values) => {
+                            rest.onChange(values.floatValue);
+                        }}
+                    />
+
+                </InputBox>
+                {error && <p>{error.message}
+                </p>
+                }
+            </TextBox>
+        )}
+    />
+)
