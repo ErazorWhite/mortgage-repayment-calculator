@@ -15,17 +15,6 @@ export const RadioLegend = styled.legend`
 export const Li = styled.li`
     padding-bottom: 12px;
 `
-export const CheckMark = styled.span`
-    position: relative;
-    display: inline-block;
-    margin-right: 16px;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--color-state-700);
-    border-radius: 50%;
-    background-color: transparent;
-    transition: background-color var(--animation);
-`
 
 export const RadioLabel = styled.label`
     ${typography.preset3};
@@ -37,6 +26,16 @@ export const RadioLabel = styled.label`
     color: var(--color-state-900);
     cursor: pointer;
     transition: var(--animation);
+    
+    &::before {
+        content: '';
+        margin-right: 16px;
+        width: 20px;
+        height: 20px;
+        box-shadow: 0 0 0 2px var(--color-state-700);
+        border-radius: 50%;
+        transition: background-color var(--animation);
+    }
 
     &:hover {
         border-color: var(--color-lime);
@@ -44,38 +43,30 @@ export const RadioLabel = styled.label`
 `;
 
 export const RadioInput = styled.input`
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-  
-  &:focus + ${RadioLabel} {
-    outline: 2px solid black;
-  }
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    height: 0;
+    width: 0;
 
-  &:checked + ${RadioLabel} {
-    background-color: var(--color-lime-opacity);
-    border-color: var(--color-state-500);
-
-    ${CheckMark} {
-      background-color: var(--color-lime-opacity);
-      border-color: var(--color-lime);
-
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 10px;
-        height: 10px;
-        background-color: var(--color-lime);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-      }
+    &:focus + ${RadioLabel} {
+        outline: 2px solid black;
     }
-  }
+
+    &:checked + ${RadioLabel} {
+        background-color: var(--color-lime-opacity);
+        border-color: var(--color-state-500);
+
+        &::before {
+            background-color: var(--color-lime);
+            border: 3px solid var(--color-lime-opacity);
+            box-shadow: 0 0 0 2px var(--color-lime);
+            
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
 `;
 
 
