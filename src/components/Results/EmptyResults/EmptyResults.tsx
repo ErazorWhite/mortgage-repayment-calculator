@@ -1,6 +1,6 @@
 import React from 'react'
 import {H2, P, ResultsBox} from "./EmptyResults.styled";
-import {ResultsBackground} from "../../../assets/Icons/ResultsBackground";
+import {ResultsBackground} from "../../icons/ResultsBackground";
 
 export const EmptyResults = () => {
     return (
