@@ -1,14 +1,14 @@
 import {SubmitErrorHandler, SubmitHandler, useForm} from "react-hook-form";
 import {useState} from "react";
 import {yupResolver} from '@hookform/resolvers/yup';
-import {Position, MortgageData, MortgageInput} from "../../global/types.ts";
-import {TextInput} from "../TextInput/TextInput.tsx";
+import {Position, MortgageData, MortgageInput} from "../../../global/types.ts";
 import {RadioGroup} from "../RadioGroup/RadioGroup.tsx";
-import {Results} from "../Results/Results.tsx";
-import {mortgageCalc} from "../utilities/mortgageCalc.ts";
+import {Results} from "../../Results/Results.tsx";
+import {mortgageCalc} from "../../utilities/mortgageCalc.ts";
 import {ClearButton, Form, FormHeader, H1} from "./CalculatorForm.styled";
-import {CalculateButton} from "../CalculateButton/CalculateButton";
-import {MortgageDataSchema} from "../utilities/validationSchemas";
+import {CalculateButton} from "../../CalculateButton/CalculateButton";
+import {MortgageDataSchema} from "../../utilities/validationSchemas";
+import {TextInputGroup} from "../TextInputGroup/TextInputGroup";
 
 const formFields: Array<MortgageInput> = [
     {
@@ -63,9 +63,7 @@ export const CalculatorForm = () => {
                     </ClearButton>
                 </FormHeader>
 
-                {formFields.map(({...props}) => (
-                    <TextInput key={props.name} control={control} {...props}/>
-                ))}
+                <TextInputGroup control={control} formFields={formFields}/>
 
                 <RadioGroup
                     label="Mortgage Type"

@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import {typography} from "../../global/theme";
+import {typography} from "../../../global/theme";
+import {TABLET_BP} from "../../../global/breakpoints";
 
 export const Form = styled.form`
     padding: 24px 32px;
@@ -8,6 +9,11 @@ export const Form = styled.form`
 
 export const FormHeader = styled.div`
     margin-bottom: 24px;
+
+    @media screen and ${TABLET_BP} {
+        display: flex;
+        justify-content: space-between;
+    }
 `
 
 export const H1 = styled.h1`

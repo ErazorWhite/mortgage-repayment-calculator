@@ -1,8 +1,12 @@
 import styled from "styled-components";
-import {typography} from "../../global/theme";
+import {typography} from "../../../global/theme";
+import {TABLET_BP} from "../../../global/breakpoints";
 
 export const StyledRadio = styled.div`
     margin-bottom: 24px;
+    @media screen and ${TABLET_BP} {
+        margin-bottom: 40px;
+    }
 `
 
 export const RadioLegend = styled.legend`

@@ -1,5 +1,5 @@
 import {Control, FieldError, UseFormRegister} from "react-hook-form";
-import {ReactNode, SyntheticEvent} from "react";
+import {ReactNode, Ref} from "react";
 
 // CalculatorForm Data
 
@@ -40,10 +40,19 @@ export interface InputBoxProps {
 
 export interface TextInputProps {
     label: string;
-    control: Control<any>
-    name: keyof MortgageData;
-    decoratorOptions?: {text: string, pos: Position};
+    name: string;
+    decoratorOptions?: {
+        text: string;
+        pos: Position;
+    };
+    error?: FieldError;
+    control?: Control<any>;
+    onChange: (value: any) => void;
+    onBlur?: () => void;
+    value: any;
+    ref?: Ref<HTMLInputElement>;
 }
+
 
 // Radio buttons
 

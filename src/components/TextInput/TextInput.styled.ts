@@ -10,21 +10,19 @@ export const TextLabel = styled.label`
     color: var(--color-state-700);
 `
 
-export const TextBox = styled.div`
-    margin: 0 0 24px 0;
-`
-
 export const InputBox = styled.div<InputBoxProps>`
     display: flex;
     border: 1px solid var(--color-state-500);
     border-radius: 4px;
 
     ${({$position, $content}) => {
+        if(!$position || !$content) return;
+        
         const pseudoElement = $position === 'prefix' ? '&::before' : '&::after';
 
         return css`
             ${pseudoElement} {
-                content: "${$content || ''}";
+                content: "${$content}";
                 display: block;
                 ${typography.preset3};
                 padding: 13px 16px;

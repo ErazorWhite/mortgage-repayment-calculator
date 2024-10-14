@@ -1,4 +1,4 @@
-import {RadioGroupProps} from "../../global/types.ts";
+import {RadioGroupProps} from "../../../global/types.ts";
 import {Li, RadioInput, RadioLabel, RadioLegend, StyledRadio} from "./RadioGroup.styles";
 
 export const RadioGroup = ({label, name, options, register, error}: RadioGroupProps) => {
