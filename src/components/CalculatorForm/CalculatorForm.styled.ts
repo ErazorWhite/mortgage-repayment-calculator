@@ -7,11 +7,11 @@ export const Form = styled.form`
 `
 
 export const FormHeader = styled.div`
-    padding-bottom: 24px;
+    margin-bottom: 24px;
 `
 
 export const H1 = styled.h1`
-    padding-bottom: 8px;
+    margin-bottom: 8px;
     ${typography.preset2};
 
 `

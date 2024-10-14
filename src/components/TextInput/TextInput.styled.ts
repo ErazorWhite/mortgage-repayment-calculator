@@ -4,14 +4,14 @@ import {InputBoxProps} from "../../global/types";
 
 export const TextLabel = styled.label`
     ${typography.preset4};
-    padding-bottom: 12px;
+    margin-bottom: 12px;
     display: block;
 
     color: var(--color-state-700);
 `
 
 export const TextBox = styled.div`
-    padding: 0 0 24px 0;
+    margin: 0 0 24px 0;
 `
 
 export const InputBox = styled.div<InputBoxProps>`

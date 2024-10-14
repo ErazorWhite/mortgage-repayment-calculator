@@ -10,18 +10,18 @@ export const ResultsBox = styled.div`
 export const H2 = styled.h2`
     ${typography.preset2};
     color: var(--color-white);
-    padding-bottom: 16px;
+    margin-bottom: 16px;
 `
 
 export const P = styled.p`
     ${typography.preset4};
-    padding-bottom: 8px;
+    margin-bottom: 8px;
     color: var(--color-state-300);
 `
 export const Description = styled.p`
     ${typography.preset4};
     color: var(--color-state-300);
-    padding-bottom: 24px;
+    margin-bottom: 24px;
 `
 
 export const H3 = styled.h3`

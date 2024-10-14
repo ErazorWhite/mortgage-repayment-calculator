@@ -10,7 +10,7 @@ export const ResultsBox = styled.div`
 export const H2 = styled.h2`
     ${typography.preset2};
     color: var(--color-white);
-    padding: 16px 0;
+    margin: 16px 0;
 `
 
 export const P = styled.p`
