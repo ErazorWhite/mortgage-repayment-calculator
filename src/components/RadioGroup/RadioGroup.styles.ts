@@ -55,7 +55,7 @@ export const RadioInput = styled.input`
 
     &:checked + ${RadioLabel} {
         background-color: var(--color-lime-opacity);
-        border-color: var(--color-state-500);
+        border-color: var(--color-lime);
 
         &::before {
             background-color: var(--color-lime);
