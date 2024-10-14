@@ -15,22 +15,33 @@ export const InputBox = styled.div<InputBoxProps>`
     border: 1px solid var(--color-state-500);
     border-radius: 4px;
 
-    ${({$position, $content}) => {
-        if(!$position || !$content) return;
-        
-        const pseudoElement = $position === 'prefix' ? '&::before' : '&::after';
+    ${({$prefix}) =>
+            $prefix &&
+            css`
+                &::before {
+                    content: '${$prefix}';
+                    display: block;
+                    ${typography.preset3};
+                    padding: 13px 16px;
+                    color: var(--color-state-700);
+                    background-color: var(--color-state-100);
+                }
+            `}
 
-        return css`
-            ${pseudoElement} {
-                content: "${$content}";
-                display: block;
-                ${typography.preset3};
-                padding: 13px 16px;
-                color: var(--color-state-700);
-                background-color: var(--color-state-100);
-            }
-        `;
-    }}
+    ${({$suffix}) =>
+            $suffix &&
+            css`
+                &::after {
+                    content: '${$suffix}';
+                    display: block;
+                    ${typography.preset3};
+                    padding: 13px 16px;
+                    color: var(--color-state-700);
+                    background-color: var(--color-state-100);
+                }
+            `}
+
+
 `
 
 export const StyledInput = styled.input`

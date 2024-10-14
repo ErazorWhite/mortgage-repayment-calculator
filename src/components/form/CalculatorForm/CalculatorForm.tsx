@@ -1,32 +1,14 @@
 import {SubmitErrorHandler, SubmitHandler, useForm} from "react-hook-form";
 import {useState} from "react";
 import {yupResolver} from '@hookform/resolvers/yup';
-import {Position, MortgageData, MortgageInput} from "../../../global/types.ts";
+import {MortgageData} from "../../../global/types.ts";
 import {RadioGroup} from "../RadioGroup/RadioGroup.tsx";
 import {Results} from "../../Results/Results.tsx";
 import {mortgageCalc} from "../../utilities/mortgageCalc.ts";
-import {ClearButton, Form, FormHeader, H1} from "./CalculatorForm.styled";
+import {ClearButton, Form, FormHeader, H1, Li, Ul} from "./CalculatorForm.styled";
 import {CalculateButton} from "../../CalculateButton/CalculateButton";
 import {MortgageDataSchema} from "../../utilities/validationSchemas";
-import {TextInputGroup} from "../TextInputGroup/TextInputGroup";
-
-const formFields: Array<MortgageInput> = [
-    {
-        name: 'amount',
-        label: 'Mortgage Amount',
-        decoratorOptions: {text: "£", pos: Position.prefix}
-    },
-    {
-        name: 'term',
-        label: 'Mortgage Term',
-        decoratorOptions: {text: "years", pos: Position.suffix}
-    },
-    {
-        name: 'rate',
-        label: 'Interest Rate',
-        decoratorOptions: {text: "%", pos: Position.suffix}
-    }
-];
+import {TextInput} from "../../TextInput/TextInput";
 
 export const CalculatorForm = () => {
     const [monthlyRepayment, setMonthlyRepayment] = useState<number | null>(null);
@@ -63,7 +45,18 @@ export const CalculatorForm = () => {
                     </ClearButton>
                 </FormHeader>
 
-                <TextInputGroup control={control} formFields={formFields}/>
+                <Ul>
+                    <Li>
+                        <TextInput name="amount" label="Mortgage Amount" prefix="hello" suffix="world" control={control}/>
+                    </Li>
+                    <Li>
+                        <TextInput name="term" label="Mortgage Term" suffix="years" control={control}/>
+                    </Li>
+                    <Li>
+                        <TextInput name="rate" label="Interest rate" suffix="%" control={control}/>
+                    </Li>
+                </Ul>
+
 
                 <RadioGroup
                     label="Mortgage Type"
