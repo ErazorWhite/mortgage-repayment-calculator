@@ -1,6 +1,6 @@
 import styled, {css} from "styled-components";
-import {typography} from "../../global/theme";
-import {InputBoxProps} from "../../global/types";
+import {typography} from "../../../global/theme";
+import {InputBoxProps} from "../../../global/types";
 
 export const TextLabel = styled.label`
     ${typography.preset4};

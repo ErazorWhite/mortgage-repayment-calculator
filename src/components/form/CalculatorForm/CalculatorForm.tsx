@@ -5,10 +5,10 @@ import {MortgageData} from "../../../global/types.ts";
 import {RadioGroup} from "../RadioGroup/RadioGroup.tsx";
 import {Results} from "../../Results/Results.tsx";
 import {mortgageCalc} from "../../utilities/mortgageCalc.ts";
-import {ClearButton, Form, FormHeader, H1, Li, Ul} from "./CalculatorForm.styled";
+import {ClearButton, Form, FormHeader, FormThumb, H1, Li, Ul} from "./CalculatorForm.styled";
 import {CalculateButton} from "../../CalculateButton/CalculateButton";
 import {MortgageDataSchema} from "../../utilities/validationSchemas";
-import {TextInput} from "../../TextInput/TextInput";
+import {TextInput} from "../TextInput/TextInput";
 
 export const CalculatorForm = () => {
     const [monthlyRepayment, setMonthlyRepayment] = useState<number | null>(null);
@@ -37,7 +37,7 @@ export const CalculatorForm = () => {
     const onError: SubmitErrorHandler<MortgageData> = (data) => console.log(data);
 
     return (
-        <>
+        <FormThumb>
             <Form onSubmit={handleSubmit(onSubmit, onError)}>
                 <FormHeader>
                     <H1>Mortgage Calculator</H1>
@@ -47,7 +47,7 @@ export const CalculatorForm = () => {
 
                 <Ul>
                     <Li>
-                        <TextInput name="amount" label="Mortgage Amount" prefix="hello" suffix="world" control={control}/>
+                        <TextInput name="amount" label="Mortgage Amount" prefix="£" control={control}/>
                     </Li>
                     <Li>
                         <TextInput name="term" label="Mortgage Term" suffix="years" control={control}/>
@@ -72,8 +72,7 @@ export const CalculatorForm = () => {
                 <CalculateButton>Calculate Repayments</CalculateButton>
 
             </Form>
-
             <Results monthlyRepayment={monthlyRepayment} totalRepayment={totalRepayment}/>
-        </>
+        </FormThumb>
     )
 }

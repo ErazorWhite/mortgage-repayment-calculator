@@ -1,10 +1,10 @@
 import React from 'react'
 import {ResultsProps} from "../../../global/types";
-import {ResultsBox, H2, P, H3, H4, CalculatedBox, Description} from "./CalculatedResults.styled";
+import {H2, P, H3, H4, CalculatedBox, Description, ResultsBoxCalculated} from "./CalculatedResults.styled";
 
 export const CalculatedResults = ({monthlyRepayment, totalRepayment}: ResultsProps) => {
     return (
-        <ResultsBox>
+        <ResultsBoxCalculated>
             <H2>Your results</H2>
             <Description>
                 Your results are shown below based on the information you provided. To adjust the results, edit
@@ -18,6 +18,6 @@ export const CalculatedResults = ({monthlyRepayment, totalRepayment}: ResultsPro
                 <P>Total you'll repay over the term</P>
                 <H4>£{Intl.NumberFormat('en-US').format(Number(totalRepayment))}</H4>
             </CalculatedBox>
-        </ResultsBox>
+        </ResultsBoxCalculated>
     )
 }

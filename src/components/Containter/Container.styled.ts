@@ -11,11 +11,11 @@ export const StyledContainer = styled.div`
 
     @media screen and ${TABLET_BP} {
         max-width: 768px;
-        padding: 0 32px;
+        padding: 40px 40px 40px 40px;
     }
 
     @media screen and ${DESKTOP_BP} {
-        max-width: 1440px;
+        max-width: 1088px;
     }
 `
 

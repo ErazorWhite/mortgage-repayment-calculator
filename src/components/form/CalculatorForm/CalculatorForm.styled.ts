@@ -1,10 +1,22 @@
 import styled from "styled-components";
 import {typography} from "../../../global/theme";
-import {PHONE_BP, TABLET_BP} from "../../../global/breakpoints";
+import {DESKTOP_BP, PHONE_BP, TABLET_BP} from "../../../global/breakpoints";
+
+export const FormThumb = styled.div`
+    background-color: var(--color-white);
+
+    @media screen and ${TABLET_BP} {
+        border-radius: 24px;
+    }
+
+    @media screen and ${DESKTOP_BP} {
+        display: flex;
+    }
+`
 
 export const Form = styled.form`
     padding: 24px 32px;
-    background-color: var(--color-white);
+    flex: 1;
 `
 
 export const FormHeader = styled.div`
