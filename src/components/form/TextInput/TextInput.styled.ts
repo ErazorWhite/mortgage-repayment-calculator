@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import {typography} from "../../../global/theme";
 import {InputBoxProps} from "../../../global/types";
 
@@ -15,33 +15,22 @@ export const InputBox = styled.div<InputBoxProps>`
     border: 1px solid var(--color-state-500);
     border-radius: 4px;
 
-    ${({$prefix}) =>
-            $prefix &&
-            css`
-                &::before {
-                    content: '${$prefix}';
-                    display: block;
-                    ${typography.preset3};
-                    padding: 13px 16px;
-                    color: var(--color-state-700);
-                    background-color: var(--color-state-100);
-                }
-            `}
+    &[data-prefix]::before {
+        content: attr(data-prefix);
+    }
 
-    ${({$suffix}) =>
-            $suffix &&
-            css`
-                &::after {
-                    content: '${$suffix}';
-                    display: block;
-                    ${typography.preset3};
-                    padding: 13px 16px;
-                    color: var(--color-state-700);
-                    background-color: var(--color-state-100);
-                }
-            `}
+    &[data-suffix]::after {
+        content: attr(data-suffix);
+    }
 
-
+    &::before,
+    &::after {
+        display: block;
+        ${typography.preset3};
+        padding: 13px 16px;
+        color: var(--color-state-700);
+        background-color: var(--color-state-100);
+    }
 `
 
 export const StyledInput = styled.input`

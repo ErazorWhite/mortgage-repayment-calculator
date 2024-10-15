@@ -11,7 +11,7 @@ export const TextInput = ({name, label, control, prefix, suffix}: InputProps) =>
             render={({field: {onChange, value, ref}, fieldState: {error}}) => (
                 <>
                     <TextLabel htmlFor={name}>{label}</TextLabel>
-                    <InputBox $prefix={prefix} $suffix={suffix} >
+                    <InputBox data-prefix={prefix} data-suffix={suffix} >
 
                         <NumericFormat
                             getInputRef={ref}
