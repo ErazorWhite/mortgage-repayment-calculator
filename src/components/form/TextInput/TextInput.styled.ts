@@ -15,6 +15,11 @@ export const InputBox = styled.div<InputBoxProps>`
     border: 1px solid var(--color-state-500);
     border-radius: 4px;
     
+    &:hover,
+    &:focus {
+        border-color: var(--color-state-900);
+    }
+    
     &[data-touched],
     &[data-touched]::before,
     &[data-touched]::after {

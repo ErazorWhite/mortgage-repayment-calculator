@@ -11,6 +11,13 @@ export const StyledButton = styled.button`
     color: var(--color-state-900);
     border: none;
     border-radius: 999px;
+    cursor: pointer;
+    transition: var(--animation);
+
+    &:hover,
+    &focus {
+        background-color: var(--color-lime-opacity);
+    }
 `
 
 export const P = styled.p`

@@ -36,11 +36,17 @@ export const H1 = styled.h1`
 
 export const ClearButton = styled.button`
     ${typography.preset4};
-    background-color: transparent;
     border: none;
     text-decoration: underline;
-    
+    background-color: transparent;
     color: var(--color-state-700);
+    transition: var(--animation);
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        color: var(--color-state-900);
+    }
 `
 
 export const Li = styled.li`

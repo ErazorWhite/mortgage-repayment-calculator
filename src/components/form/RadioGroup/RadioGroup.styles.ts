@@ -58,14 +58,14 @@ export const RadioInput = styled.input`
     }
 
     &:checked + ${RadioLabel} {
-        background-color: var(--color-lime-opacity);
+        background-color: var(--color-lime-light);
         border-color: var(--color-lime);
 
         &::before {
             background-color: var(--color-lime);
-            border: 3px solid var(--color-lime-opacity);
+            border: 3px solid var(--color-lime-light);
             box-shadow: 0 0 0 2px var(--color-lime);
-            
+
             width: 20px;
             height: 20px;
         }
