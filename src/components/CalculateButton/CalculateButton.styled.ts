@@ -9,6 +9,7 @@ export const StyledButton = styled.button`
     padding: 17px 47px;
     background-color: var(--color-lime);
     color: var(--color-state-900);
+    fill: var(--color-state-900);
     border: none;
     border-radius: 999px;
     cursor: pointer;
