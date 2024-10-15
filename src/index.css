@@ -16,7 +16,8 @@
   /* Colors */
   --color-white: #ffffff; /* White */
   --color-lime: #D8DB2F; /* Lime */
-  --color-lime-opacity: rgb(249, 250, 227);
+  --color-lime-light: rgb(249, 250, 227);
+  --color-lime-opacity: rgba(216, 219, 47, 0.5);
   --color-black-opacity: rgba(0, 0, 0, .25);
   --color-state-900: #133041; /* State 900 */
   --color-state-700: #4E6E7E; /* State 700 */
@@ -26,8 +27,7 @@
   --color-error: #D73C3C; /* Red (Errors) */
 
   /* Animation */
-  --animation: 150ms ease-in;
-
+  --animation: color 150ms ease-in, background-color 150ms ease-in, border-color 150ms ease-in;
 }
 
 body {
