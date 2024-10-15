@@ -31,7 +31,7 @@ export const CalculatorForm = () => {
     const handleClear = () => {
         setMonthlyRepayment(null);
         setTotalRepayment(null);
-        reset()
+        reset();
     };
 
     const onError: SubmitErrorHandler<MortgageData> = (data) => console.log(data);

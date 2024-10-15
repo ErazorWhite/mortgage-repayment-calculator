@@ -1,5 +1,6 @@
 import {RadioGroupProps} from "../../../global/types.ts";
 import {Li, RadioInput, RadioLabel, RadioLegend, StyledRadio} from "./RadioGroup.styles";
+import {ValidateErrorStyled} from "../../ValidateError/ValidateError.styled";
 
 export const RadioGroup = ({label, name, options, register, error}: RadioGroupProps) => {
 
@@ -21,7 +22,7 @@ export const RadioGroup = ({label, name, options, register, error}: RadioGroupPr
                     </Li>
                 ))}
             </ul>
-            {error && <p>{error.message}</p>}
+            {error && <ValidateErrorStyled>{error.message}</ValidateErrorStyled>}
 
         </StyledRadio>
     )

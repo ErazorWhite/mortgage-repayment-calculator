@@ -14,6 +14,21 @@ export const InputBox = styled.div<InputBoxProps>`
     display: flex;
     border: 1px solid var(--color-state-500);
     border-radius: 4px;
+    
+    &[data-touched],
+    &[data-touched]::before,
+    &[data-touched]::after {
+        border-color: var(--color-lime);
+        background-color: var(--color-lime);
+    }
+
+    &[data-error],
+    &[data-error]::before,
+    &[data-error]::after {
+        border-color: var(--color-error);
+        background-color: var(--color-error);
+        color: var(--color-white);
+    }
 
     &[data-prefix]::before {
         content: attr(data-prefix);
