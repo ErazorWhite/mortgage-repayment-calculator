@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {TABLET_BP, DESKTOP_BP} from "../../global/breakpoints";
+import {TABLET_BP, DESKTOP_BP} from "./global/breakpoints";
 
 export const StyledContainer = styled.div`
     max-width: 415px;
@@ -15,6 +15,7 @@ export const StyledContainer = styled.div`
     }
 
     @media screen and ${DESKTOP_BP} {
+        min-height: calc(100vh / 1.5);
         max-width: 1088px;
     }
 `
