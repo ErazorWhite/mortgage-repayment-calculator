@@ -12,8 +12,7 @@ export const TextInput = ({name, label, control, prefix, suffix}: InputProps) =>
             render={({field: {onChange, onBlur, value, ref}, fieldState: {error, isTouched}}) => (
                 <>
                     <TextLabel htmlFor={name}>{label}</TextLabel>
-                    <InputBox data-prefix={prefix} data-suffix={suffix} data-error={error}
-                              data-touched={isTouched && !error ? true : undefined}>
+                    <InputBox data-prefix={prefix} data-suffix={suffix} $isInvalid={!!error} $isTouched={isTouched && !error}>
 
                         <NumericFormat
                             getInputRef={ref}

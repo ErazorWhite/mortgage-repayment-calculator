@@ -25,8 +25,8 @@ export enum Position {
 // Input
 
 export interface InputBoxProps {
-    $prefix?: string;
-    $suffix?: string;
+    $isInvalid?: boolean;
+    $isTouched?: boolean;
 }
 
 export interface InputProps {
