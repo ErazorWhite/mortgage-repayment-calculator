@@ -19,6 +19,11 @@ export const FormThumb = styled.div`
 export const Form = styled.form`
     padding: 24px 32px;
     flex: 1;
+
+    @media screen and ${DESKTOP_BP} {
+        padding: 40px;
+
+    }
 `
 
 export const FormHeader = styled.div`
