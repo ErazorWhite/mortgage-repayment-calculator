@@ -12,7 +12,7 @@ export const FormThumb = styled.div`
     @media screen and ${DESKTOP_BP} {
         display: flex;
     }
-    
+
     box-shadow: 0 32px 64px rgba(19, 48, 65, 0.1);
 `
 
@@ -22,7 +22,6 @@ export const Form = styled.form`
 
     @media screen and ${DESKTOP_BP} {
         padding: 40px;
-
     }
 `
 
