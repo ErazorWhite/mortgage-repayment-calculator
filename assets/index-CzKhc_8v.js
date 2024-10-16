@@ -301,6 +301,7 @@ attempted value: ${o}
     display: flex;
     border: 1px solid var(--color-state-500);
     border-radius: 4px;
+    transition: var(--animation);
 
     &::before,
     &::after {
