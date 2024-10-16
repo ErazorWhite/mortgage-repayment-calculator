@@ -226,7 +226,7 @@ Error generating stack: `+l.message+`
 `,E5=te.h1`
     margin-bottom: 8px;
     ${We.preset2};
-
+    color: var(--color-state-900);
 `,N5=te.button`
     ${We.preset4};
     border: none;
