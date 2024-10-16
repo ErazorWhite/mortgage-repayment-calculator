@@ -16,6 +16,8 @@ export const StyledContainer = styled.div`
 
     @media screen and ${DESKTOP_BP} {
         max-width: 1088px;
+        
+        padding-top: 200px;
     }
 `
 
