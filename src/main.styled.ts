@@ -15,7 +15,6 @@ export const StyledContainer = styled.div`
     }
 
     @media screen and ${DESKTOP_BP} {
-        min-height: calc(100vh / 1.5);
         max-width: 1088px;
     }
 `

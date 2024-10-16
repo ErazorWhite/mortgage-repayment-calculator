@@ -37,6 +37,8 @@ body {
 
     line-height: 1.25;
     letter-spacing: -1px;
+
+    padding-top: 150px;
 }
 
 @font-face {
