@@ -213,7 +213,7 @@ Error generating stack: `+l.message+`
     @media screen and ${Ar} {
         display: flex;
     }
-    
+
     box-shadow: 0 32px 64px rgba(19, 48, 65, 0.1);
 `,k5=te.form`
     padding: 24px 32px;
@@ -221,7 +221,6 @@ Error generating stack: `+l.message+`
 
     @media screen and ${Ar} {
         padding: 40px;
-
     }
 `,_5=te.div`
     margin-bottom: 24px;
