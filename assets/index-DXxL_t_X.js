@@ -213,6 +213,8 @@ Error generating stack: `+l.message+`
     @media screen and ${Ii} {
         display: flex;
     }
+    
+    box-shadow: 0 32px 64px rgba(19, 48, 65, 0.1);
 `,k5=te.form`
     padding: 24px 32px;
     flex: 1;
