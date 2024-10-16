@@ -31,7 +31,7 @@ export const FormHeader = styled.div`
 export const H1 = styled.h1`
     margin-bottom: 8px;
     ${typography.preset2};
-
+    color: var(--color-state-900);
 `
 
 export const ClearButton = styled.button`
