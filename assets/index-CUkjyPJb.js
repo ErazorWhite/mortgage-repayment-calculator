@@ -367,5 +367,7 @@ attempted value: ${o}
 
     @media screen and ${Ii} {
         max-width: 1088px;
+        
+        padding-top: 200px;
     }
 `;K2(document.getElementById("root")).render(k.jsx(Ce.StrictMode,{children:k.jsx(Y3,{children:k.jsx(G3,{})})}));
