@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {typography} from "../../../global/theme";
-import {DESKTOP_BP, PHONE_BP, TABLET_BP} from "../../../global/breakpoints";
+import {DESKTOP_BP, MOBILE_BP, TABLET_BP} from "../../../global/breakpoints";
 
 export const FormThumb = styled.div`
     background-color: var(--color-white);
@@ -58,7 +58,7 @@ export const ClearButton = styled.button`
 export const Li = styled.li`
     box-sizing: border-box;
 
-    @media screen and ${PHONE_BP} {
+    @media screen and ${MOBILE_BP} {
         margin: 0 0 24px 0;
     }
 
