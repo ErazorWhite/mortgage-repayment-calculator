@@ -11,20 +11,12 @@ export const StyledButton = styled.button`
     color: var(--color-state-900);
     fill: var(--color-state-900);
     border: none;
-    border-radius: 999px;
+    border-radius: 30px;
     cursor: pointer;
     transition: var(--animation);
 
     &:hover,
     &focus {
         background-color: var(--color-lime-opacity);
-    }
-`
-
-export const P = styled.p`
-    display: inline-block;
-    
-    &::before {
-        
     }
 `

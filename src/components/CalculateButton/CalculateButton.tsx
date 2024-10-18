@@ -1,13 +1,12 @@
-import React, {FC} from 'react'
-import {Props} from "../../global/types";
-import {P, StyledButton} from "./CalculateButton.styled";
+import React, {ButtonHTMLAttributes, FC} from 'react'
+import {StyledButton} from "./CalculateButton.styled";
 import {IconCalculator} from "../icons/IconCalculator";
 
-export const CalculateButton: FC<Props> = ({children}) => {
+export const CalculateButton: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({children, ...props}) => {
     return (
-        <StyledButton>
+        <StyledButton {...props}>
             <IconCalculator/>
-            <P>{children}</P>
+            {children}
         </StyledButton>
     )
 }

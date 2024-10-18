@@ -25,6 +25,7 @@
     --color-state-300: #9ABED5; /* State 300 */
     --color-state-100: #E4F4FD; /* State 100 */
     --color-error: #D73C3C; /* Red (Errors) */
+    --color-black: black;
 
     /* Animation */
     --animation: color 150ms ease-in, background-color 150ms ease-in, border-color 150ms ease-in;

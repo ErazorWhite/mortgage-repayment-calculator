@@ -55,21 +55,21 @@ export const ClearButton = styled.button`
     }
 `
 
-export const Li = styled.li`
+const Li = styled.li`
     box-sizing: border-box;
-
     @media screen and ${MOBILE_BP} {
         margin: 0 0 24px 0;
     }
+`
 
+export const FullLi = styled(Li)`
     @media screen and ${TABLET_BP} {
-        &:first-child {
-            flex-basis: 100%;
-        }
-
-        &:not(:first-child) {
-            flex-basis: calc(50% - 12px);
-        }
+        flex-basis: 100%;
+    }
+`
+export const HalfLi = styled(Li)`
+    @media screen and ${TABLET_BP} {
+        flex-basis: calc(50% - 12px);
     }
 `
 

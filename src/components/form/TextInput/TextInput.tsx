@@ -1,8 +1,9 @@
 import {InputBox, StyledInput, TextLabel} from "./TextInput.styled";
-import {NumericFormat} from "react-number-format";
+import {NumberFormatValues, NumericFormat} from "react-number-format";
 import {Controller} from "react-hook-form";
 import {InputProps} from "../../../global/types";
-import {ValidateErrorStyled} from "../../ValidateError/ValidateError.styled";
+import {ValidationErrorStyled} from "../../ValidateError/ValidationErrorStyled.ts";
+import {useCallback} from "react";
 
 export const TextInput = ({name, label, control, prefix, suffix}: InputProps) =>
     (
@@ -23,14 +24,14 @@ export const TextInput = ({name, label, control, prefix, suffix}: InputProps) =>
                             decimalScale={2}
                             value={value ?? ''}
                             onBlur={onBlur}
-                            onValueChange={(values) => {
+                            onValueChange={useCallback((values: NumberFormatValues) => {
                                 onChange(values.floatValue ?? values.value);
-                            }}
+                            },[])}
                         />
 
                     </InputBox>
-                    {error && <ValidateErrorStyled>{error.message}
-                    </ValidateErrorStyled>
+                    {error && <ValidationErrorStyled>{error.message}
+                    </ValidationErrorStyled>
                     }
                 </>
 

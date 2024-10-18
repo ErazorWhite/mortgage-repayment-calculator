@@ -9,7 +9,7 @@ export const StyledRadio = styled.div`
     }
 `
 
-export const RadioLegend = styled.legend`
+export const RadioHeader = styled.p`
     ${typography.preset4};
     margin-bottom: 12px;
 
@@ -54,7 +54,7 @@ export const RadioInput = styled.input`
     width: 0;
 
     &:focus + ${RadioLabel} {
-        outline: 2px solid black;
+        outline: 2px solid var(--color-black);
     }
 
     &:checked + ${RadioLabel} {

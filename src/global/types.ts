@@ -1,4 +1,4 @@
-import {Control, FieldError, UseFormRegister} from "react-hook-form";
+import {Control, FieldError, FieldValues, Path, UseFormRegister} from "react-hook-form";
 import {ReactNode} from "react";
 
 // CalculatorForm Data
@@ -44,11 +44,11 @@ interface RadioOption {
     value: string;
 }
 
-export interface RadioGroupProps {
+export interface RadioGroupProps<TFieldValues extends FieldValues> {
     label: string;
-    name: keyof MortgageData;
+    name: Path<TFieldValues>;
     options: RadioOption[];
-    register: UseFormRegister<MortgageData>;
+    register: UseFormRegister<TFieldValues>;
     error?: FieldError;
 }
 
