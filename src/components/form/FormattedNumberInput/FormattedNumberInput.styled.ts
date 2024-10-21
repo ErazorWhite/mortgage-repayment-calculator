@@ -1,6 +1,12 @@
 import styled, {css} from "styled-components";
 import {typography} from "../../../global/theme";
-import {InputBoxProps} from "../../../global/types";
+
+interface InputBoxProps {
+    isInvalid?: boolean;
+    isTouched?: boolean;
+    'data-prefix'?: string;
+    'data-suffix'?: string;
+}
 
 export const TextLabel = styled.label`
     ${typography.preset4};
@@ -10,7 +16,7 @@ export const TextLabel = styled.label`
     color: var(--color-state-700);
 `
 
-export const InputBox = styled.div<InputBoxProps>`
+export const InputBox = styled.div.withConfig({shouldForwardProp: (prop) => prop != 'isInvalid' && prop != 'isTouched'})<InputBoxProps>`
     display: flex;
     border: 1px solid var(--color-state-500);
     border-radius: 4px;
@@ -25,7 +31,7 @@ export const InputBox = styled.div<InputBoxProps>`
         background-color: var(--color-state-100);
     }
 
-    ${({$isInvalid}) => $isInvalid && css`
+    ${({isInvalid}) => isInvalid && css`
         border-color: var(--color-error);
 
         &::before, &::after {
@@ -33,7 +39,8 @@ export const InputBox = styled.div<InputBoxProps>`
             color: var(--color-white);
         }
     `}
-    ${({$isTouched}) => $isTouched && css`
+    
+    ${({isTouched}) => isTouched && css`
         border-color: var(--color-lime);
 
         &::before, &::after {

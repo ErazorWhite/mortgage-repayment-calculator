@@ -16,9 +16,9 @@
     /* Colors */
     --color-white: #ffffff; /* White */
     --color-lime: #D8DB2F; /* Lime */
-    --color-lime-light: rgb(249, 250, 227);
-    --color-lime-opacity: rgba(216, 219, 47, 0.5);
-    --color-black-opacity: rgba(0, 0, 0, .25);
+    --color-lime-light: #f9fae3;
+    --color-lime-opacity: #d8db2f7f;
+    --color-black-opacity: #0000003f;
     --color-state-900: #133041; /* State 900 */
     --color-state-700: #4E6E7E; /* State 700 */
     --color-state-500: #6B94A8; /* State 500 */
@@ -38,22 +38,21 @@ body {
 
     line-height: 1.25;
     letter-spacing: -1px;
-
 }
 
 @font-face {
     font-family: 'Plus Jakarta Sans';
-    src: url('./assets/fonts/PlusJakartaSans-Bold.woff2'),
-    url('./assets/fonts/PlusJakartaSans-Bold.ttf');
+    src: url('./assets/fonts/PlusJakartaSans-Bold.woff2') format("woff2"),
+    url('./assets/fonts/PlusJakartaSans-Bold.ttf') format('ttf');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Plus Jakarta Sans';
-    src: url('./assets/fonts/PlusJakartaSans-Regular.woff2'),
-    url('./assets/fonts/PlusJakartaSans-Regular.woff'),
-    url('./assets/fonts/PlusJakartaSans-Medium.ttf');
+    src: url('./assets/fonts/PlusJakartaSans-Regular.woff2') format("woff2"),
+    url('./assets/fonts/PlusJakartaSans-Regular.woff') format("woff"),
+    url('./assets/fonts/PlusJakartaSans-Medium.ttf') format('ttf');
     font-weight: 500;
     font-style: normal;
 }

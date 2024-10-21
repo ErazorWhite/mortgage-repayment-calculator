@@ -1,18 +1,19 @@
 import {SubmitErrorHandler, SubmitHandler, useForm} from "react-hook-form";
 import {useCallback, useState} from "react";
 import {yupResolver} from '@hookform/resolvers/yup';
-import {MortgageData} from "../../../global/types.ts";
+import {MortgageData, MortgageType} from "./types.ts";
 import {RadioGroup} from "../RadioGroup/RadioGroup.tsx";
-import {Results} from "../../Results/Results.tsx";
 import {mortgageCalc} from "../../utilities/mortgageCalc.ts";
 import {ClearButton, Form, FormHeader, FormThumb, FullLi, H1, HalfLi, Ul} from "./CalculatorForm.styled";
 import {CalculateButton} from "../../CalculateButton/CalculateButton";
 import {MortgageDataSchema} from "../../utilities/validationSchemas";
-import {TextInput} from "../TextInput/TextInput";
+import {FormattedNumberInput} from "../FormattedNumberInput/FormattedNumberInput.tsx";
+import {CalculatedResults} from "../../Results/CalculatedResults/CalculatedResults.tsx";
+import {EmptyResults} from "../../Results/EmptyResults/EmptyResults.tsx";
 
 const radioOptions = [
-    {label: 'Repayment', value: 'Repayment'},
-    {label: 'Interest Only', value: 'Interest Only'},
+    {label: MortgageType.Repayment, value: MortgageType.Repayment},
+    {label: MortgageType.Repayment, value: MortgageType.InterestOnly},
 ]
 
 export const CalculatorForm = () => {
@@ -28,7 +29,7 @@ export const CalculatorForm = () => {
 
     const onSubmit: SubmitHandler<MortgageData> = useCallback(({amount, term, rate, type}) => {
 
-        let {monthlyPayment, totalRepayment} = mortgageCalc(term, rate, type, amount);
+        let {monthlyPayment, totalRepayment} = mortgageCalc({term, rate, type, amount});
 
         setMonthlyRepayment(parseFloat(monthlyPayment.toFixed(2)));
         setTotalRepayment(parseFloat(totalRepayment.toFixed(2)));
@@ -54,16 +55,15 @@ export const CalculatorForm = () => {
 
                 <Ul>
                     <FullLi>
-                        <TextInput name="amount" label="Mortgage Amount" prefix="£" control={control}/>
+                        <FormattedNumberInput name="amount" label="Mortgage Amount" prefix="£" control={control}/>
                     </FullLi>
                     <HalfLi>
-                        <TextInput name="term" label="Mortgage Term" suffix="years" control={control}/>
+                        <FormattedNumberInput name="term" label="Mortgage Term" suffix="years" control={control}/>
                     </HalfLi>
                     <HalfLi>
-                        <TextInput name="rate" label="Interest rate" suffix="%" control={control}/>
+                        <FormattedNumberInput name="rate" label="Interest rate" suffix="%" control={control}/>
                     </HalfLi>
                 </Ul>
-
 
                 <RadioGroup
                     label="Mortgage Type"
@@ -73,10 +73,16 @@ export const CalculatorForm = () => {
                     error={errors.type}
                 />
 
-                <CalculateButton>Calculate Repayments</CalculateButton>
+                <CalculateButton type="submit">Calculate Repayments</CalculateButton>
 
             </Form>
-            <Results monthlyRepayment={monthlyRepayment} totalRepayment={totalRepayment}/>
+
+            {
+                monthlyRepayment && totalRepayment ?
+                    <CalculatedResults monthlyRepayment={monthlyRepayment} totalRepayment={totalRepayment}/> :
+                    <EmptyResults/>
+            }
+
         </FormThumb>
     )
 }

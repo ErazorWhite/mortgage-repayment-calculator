@@ -1,7 +1,19 @@
-import {RadioGroupProps} from "../../../global/types.ts";
 import {Li, RadioInput, RadioLabel, RadioHeader, StyledRadio} from "./RadioGroup.styles";
 import {ValidationErrorStyled} from "../../ValidateError/ValidationErrorStyled.ts";
-import {FieldValues} from "react-hook-form";
+import {FieldError, FieldValues, Path, UseFormRegister} from "react-hook-form";
+
+interface RadioOption {
+    label: string;
+    value: string;
+}
+
+interface RadioGroupProps<TFieldValues extends FieldValues> {
+    label: string;
+    name: Path<TFieldValues>;
+    options: RadioOption[];
+    register: UseFormRegister<TFieldValues>;
+    error?: FieldError;
+}
 
 export const RadioGroup = <TFieldValues extends FieldValues, >({
                                                                    label,

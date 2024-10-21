@@ -1,21 +1,21 @@
-import {MortgageType} from "../../global/types.ts";
+import {MortgageData, MortgageType} from "../form/CalculatorForm/types.ts";
 
-export function mortgageCalc(term: number, rate: number, type: MortgageType, amount: number) {
+export function mortgageCalc({term, rate, type, amount}: MortgageData) {
     const mortgageTermMonths = term * 12;
     const monthlyInterestRate = (rate / 100) / 12;
-
-    let monthlyPayment: number;
-    let totalRepayment: number;
 
     if (type === MortgageType.Repayment) {
         const numerator = amount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, mortgageTermMonths);
         const denominator = Math.pow(1 + monthlyInterestRate, mortgageTermMonths) - 1;
 
-        monthlyPayment = numerator / denominator;
-        totalRepayment = monthlyPayment * mortgageTermMonths;
+        const monthlyPayment = numerator / denominator;
+        const totalRepayment = monthlyPayment * mortgageTermMonths;
+
+        return {monthlyPayment, totalRepayment};
     } else {
-        monthlyPayment = (amount * monthlyInterestRate);
-        totalRepayment = monthlyPayment * mortgageTermMonths;
+        const monthlyPayment = amount * monthlyInterestRate;
+        const totalRepayment = monthlyPayment * mortgageTermMonths;
+
+        return {monthlyPayment, totalRepayment};
     }
-    return {monthlyPayment, totalRepayment};
 }

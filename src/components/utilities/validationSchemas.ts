@@ -1,6 +1,7 @@
 import * as yup from "yup";
 import {numberFieldValidator} from "./numberFieldValidator";
-import {MortgageType} from "../../global/types";
+import {MortgageType} from "../form/CalculatorForm/types.ts";
+
 
 export const MortgageDataSchema = yup
     .object({

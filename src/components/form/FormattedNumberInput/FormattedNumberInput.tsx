@@ -1,11 +1,18 @@
-import {InputBox, StyledInput, TextLabel} from "./TextInput.styled";
+import {InputBox, StyledInput, TextLabel} from "./FormattedNumberInput.styled.ts";
 import {NumberFormatValues, NumericFormat} from "react-number-format";
-import {Controller} from "react-hook-form";
-import {InputProps} from "../../../global/types";
+import {Control, Controller} from "react-hook-form";
 import {ValidationErrorStyled} from "../../ValidateError/ValidationErrorStyled.ts";
 import {useCallback} from "react";
 
-export const TextInput = ({name, label, control, prefix, suffix}: InputProps) =>
+export interface InputProps {
+    label: string;
+    name: string;
+    control: Control<any>;
+    prefix?: string;
+    suffix?: string
+}
+
+export const FormattedNumberInput = ({name, label, control, prefix, suffix}: InputProps) =>
     (
         <Controller
             name={name}
@@ -13,7 +20,7 @@ export const TextInput = ({name, label, control, prefix, suffix}: InputProps) =>
             render={({field: {onChange, onBlur, value, ref}, fieldState: {error, isTouched}}) => (
                 <>
                     <TextLabel htmlFor={name}>{label}</TextLabel>
-                    <InputBox data-prefix={prefix} data-suffix={suffix} $isInvalid={!!error} $isTouched={isTouched && !error}>
+                    <InputBox data-prefix={prefix} data-suffix={suffix} isInvalid={!!error} isTouched={isTouched && !error}>
 
                         <NumericFormat
                             getInputRef={ref}

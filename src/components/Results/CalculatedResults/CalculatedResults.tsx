@@ -1,23 +1,60 @@
-import React from 'react'
-import {ResultsProps} from "../../../global/types";
-import {H2, P, H3, H4, CalculatedBox, Description, ResultsBoxCalculated} from "./CalculatedResults.styled";
+import {
+    ResultsHeading,
+    ResultsCalculatedContainer
+} from "../ResultsCommon.styled.ts";
+import {
+    NumbersLabel,
+    NumbersHeading,
+    CalculatedNumbersBox,
+    Description
+} from "./CalculatedResults.styled.ts";
+import {useMemo} from "react";
 
-export const CalculatedResults = ({monthlyRepayment, totalRepayment}: ResultsProps) => {
+interface ResultsProps {
+    monthlyRepayment: number;
+    totalRepayment: number;
+    currency?: string;
+    calculatedHeadingText?: string;
+    calculatedDescriptionText?: string;
+    numbersPrimaryLabelText?: string;
+    numbersSecondaryLabelText?: string;
+}
+
+export const CalculatedResults = ({
+                                      monthlyRepayment,
+                                      totalRepayment,
+                                      currency = "GBP",
+                                      calculatedHeadingText = "Your results",
+                                      calculatedDescriptionText = "Your results are shown below based on the information you provided. To adjust the results, edit\n" +
+                                      "                the form and click “calculate repayments” again.",
+                                      numbersPrimaryLabelText = "Your monthly repayments",
+                                      numbersSecondaryLabelText = "Total you'll repay over the term",
+                                  }: ResultsProps) => {
+
+    const formatter = useMemo(
+        () =>
+            new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: currency,
+            }),
+        [currency]
+    );
+
     return (
-        <ResultsBoxCalculated>
-            <H2>Your results</H2>
+        monthlyRepayment && totalRepayment &&
+        <ResultsCalculatedContainer>
+            <ResultsHeading>{calculatedHeadingText}</ResultsHeading>
             <Description>
-                Your results are shown below based on the information you provided. To adjust the results, edit
-                the form and click “calculate repayments” again.
+                {calculatedDescriptionText}
             </Description>
 
-            <CalculatedBox>
-                <P>Your monthly repayments</P>
-                <H3>£{Intl.NumberFormat('en-US').format(Number(monthlyRepayment))}</H3>
+            <CalculatedNumbersBox>
+                <NumbersLabel>{numbersPrimaryLabelText}</NumbersLabel>
+                <NumbersHeading primary>{formatter.format(monthlyRepayment)}</NumbersHeading>
 
-                <P>Total you'll repay over the term</P>
-                <H4>£{Intl.NumberFormat('en-US').format(Number(totalRepayment))}</H4>
-            </CalculatedBox>
-        </ResultsBoxCalculated>
+                <NumbersLabel>{numbersSecondaryLabelText}</NumbersLabel>
+                <NumbersHeading>{formatter.format(totalRepayment)}</NumbersHeading>
+            </CalculatedNumbersBox>
+        </ResultsCalculatedContainer>
     )
 }

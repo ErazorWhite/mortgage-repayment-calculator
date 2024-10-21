@@ -1,16 +1,21 @@
-import React from 'react'
-import {H2, P, ResultsBoxEmpty} from "./EmptyResults.styled";
-import {ResultsBackground} from "../../icons/ResultsBackground";
+import {
+    ResultsHeading,
+} from "../ResultsCommon.styled.ts";
+import {ResultsBackground} from "../../icons/ResultsBackground.tsx";
+import {ResultsBoxEmptyContainer} from "./EmptyResults.styled.ts";
 
-export const EmptyResults = () => {
-    return (
-        <ResultsBoxEmpty>
-            <ResultsBackground/>
-            <H2>Results shown here</H2>
-            <P>
-                Complete the form and click "calculate repayments" to see what your monthly repayments would
-                be.
-            </P>
-        </ResultsBoxEmpty>
-    )
+interface EmptyResultsProps {
+    emptyResultsHeadingText?: string;
+    emptyResultsDescriptionText?: string;
 }
+
+export const EmptyResults = ({
+                                 emptyResultsHeadingText = "Results shown here",
+                                 emptyResultsDescriptionText = "Complete the form and click calculate repayments to see what your monthly repayments would be.",
+                             }: EmptyResultsProps) => (
+    <ResultsBoxEmptyContainer>
+        <ResultsBackground/>
+        <ResultsHeading stylesForEmpty>{emptyResultsHeadingText}</ResultsHeading>
+        <p>{emptyResultsDescriptionText}</p>
+    </ResultsBoxEmptyContainer>
+);
