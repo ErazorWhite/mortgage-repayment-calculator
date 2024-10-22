@@ -15,7 +15,7 @@ export const Description = styled.p`
         margin-bottom: 40px;
     }
 `
-export const CalculatedNumbersBox = styled.div`
+export const CalculationDetailsBox = styled.div`
     padding: 24px 16px;
     border-top: 4px solid var(--color-lime);
     border-radius: 8px;
@@ -26,7 +26,9 @@ export const CalculatedNumbersBox = styled.div`
     }
 }
 `
-export const NumbersHeading = styled.h3.withConfig({ shouldForwardProp: (prop) => prop !== 'primary', })<NumbersHeadingProps>`
+export const CalculationValue = styled.span.withConfig({ shouldForwardProp: (prop) => prop !== 'primary', })<NumbersHeadingProps>`
+    overflow: scroll;
+    display: block;
     ${({primary})=> primary ? css`
         ${typography.preset1};
         color: var(--color-lime);
@@ -42,6 +44,6 @@ export const NumbersHeading = styled.h3.withConfig({ shouldForwardProp: (prop) =
         color: var(--color-white);
     `}
 `
-export const NumbersLabel = styled.p`
+export const CalculationLabel = styled.p`
     margin-bottom: 8px;
 `

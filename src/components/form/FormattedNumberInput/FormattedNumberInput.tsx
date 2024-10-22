@@ -2,7 +2,6 @@ import {InputBox, StyledInput, TextLabel} from "./FormattedNumberInput.styled.ts
 import {NumberFormatValues, NumericFormat} from "react-number-format";
 import {Control, Controller} from "react-hook-form";
 import {ValidationErrorStyled} from "../../ValidateError/ValidationErrorStyled.ts";
-import {useCallback} from "react";
 
 export interface InputProps {
     label: string;
@@ -31,9 +30,9 @@ export const FormattedNumberInput = ({name, label, control, prefix, suffix}: Inp
                             decimalScale={2}
                             value={value ?? ''}
                             onBlur={onBlur}
-                            onValueChange={useCallback((values: NumberFormatValues) => {
+                            onValueChange={(values: NumberFormatValues) => {
                                 onChange(values.floatValue ?? values.value);
-                            },[])}
+                            }}
                         />
 
                     </InputBox>

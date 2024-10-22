@@ -16,7 +16,7 @@ export const TextLabel = styled.label`
     color: var(--color-state-700);
 `
 
-export const InputBox = styled.div.withConfig({shouldForwardProp: (prop) => prop != 'isInvalid' && prop != 'isTouched'})<InputBoxProps>`
+export const InputBox = styled.div.withConfig({shouldForwardProp: (prop) => prop !== 'isInvalid' && prop !== 'isTouched'})<InputBoxProps>`
     display: flex;
     border: 1px solid var(--color-state-500);
     border-radius: 4px;
@@ -66,4 +66,5 @@ export const StyledInput = styled.input`
     padding: 13px 16px;
     width: 100%;
     border: none;
+    border-radius: inherit;
 `

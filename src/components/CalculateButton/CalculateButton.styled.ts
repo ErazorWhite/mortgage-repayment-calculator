@@ -16,7 +16,7 @@ export const StyledButton = styled.button`
     transition: var(--animation);
 
     &:hover,
-    &focus {
+    &:focus {
         background-color: var(--color-lime-opacity);
     }
 `

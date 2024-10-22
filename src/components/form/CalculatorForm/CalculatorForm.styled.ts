@@ -4,6 +4,7 @@ import {DESKTOP_BP, MOBILE_BP, TABLET_BP} from "../../../global/breakpoints";
 
 export const FormThumb = styled.div`
     background-color: var(--color-white);
+    box-shadow: 0 32px 64px rgba(19, 48, 65, 0.1);
 
     @media screen and ${TABLET_BP} {
         border-radius: 24px;
@@ -12,8 +13,6 @@ export const FormThumb = styled.div`
     @media screen and ${DESKTOP_BP} {
         display: flex;
     }
-
-    box-shadow: 0 32px 64px rgba(19, 48, 65, 0.1);
 `
 
 export const Form = styled.form`
@@ -36,8 +35,8 @@ export const FormHeader = styled.div`
 
 export const H1 = styled.h1`
     margin-bottom: 8px;
-    ${typography.preset2};
     color: var(--color-state-900);
+    ${typography.preset2};
 `
 
 export const ClearButton = styled.button`
@@ -55,30 +54,30 @@ export const ClearButton = styled.button`
     }
 `
 
-const Li = styled.li`
+const InputSeparator = styled.div`
     box-sizing: border-box;
     @media screen and ${MOBILE_BP} {
         margin: 0 0 24px 0;
     }
 `
 
-export const FullLi = styled(Li)`
+export const FullInputSeparator = styled(InputSeparator)`
     @media screen and ${TABLET_BP} {
         flex-basis: 100%;
     }
 `
-export const HalfLi = styled(Li)`
+export const HalfInputSeparator = styled(InputSeparator)`
     @media screen and ${TABLET_BP} {
         flex-basis: calc(50% - 12px);
     }
 `
 
-export const Ul = styled.ul`
+export const InputsContainer = styled.div`
     margin: 0 0 24px 0;
-    flex-wrap: wrap;
 
     @media screen and ${TABLET_BP} {
         display: flex;
+        flex-wrap: wrap;
         gap: 24px;
     }
 `

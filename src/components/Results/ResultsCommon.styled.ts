@@ -3,7 +3,7 @@ import {DESKTOP_BP, TABLET_BP} from "../../global/breakpoints.ts";
 import {typography} from "../../global/theme.ts";
 
 interface ResultsHeadingProps {
-    stylesForEmpty?: boolean
+    isEmpty?: boolean
 }
 
 export const ResultsBox = styled.div`
@@ -17,6 +17,7 @@ export const ResultsBox = styled.div`
     }
 
     @media screen and ${DESKTOP_BP} {
+        width: 50%;
         border-radius: 0 24px 24px 80px;
     }
 
@@ -31,16 +32,12 @@ export const ResultsBox = styled.div`
     }
 `
 
-export const ResultsCalculatedContainer = styled(ResultsBox)`
+export const CalculationResultContainer = styled(ResultsBox)`
     text-align: left;
     @media screen and ${DESKTOP_BP} {
         padding-bottom: 115px;
     }
 `
-export const ResultsHeading = styled.h2.withConfig({ shouldForwardProp: (prop) => prop !== 'stylesForEmpty', })<ResultsHeadingProps>`
-    ${({stylesForEmpty})=> stylesForEmpty ? css`
-        margin: 16px 0;
-    ` : css`
-        margin: 0 0 16px 0;
-    `}
+export const Heading = styled.h2.withConfig({ shouldForwardProp: (prop) => prop !== 'isEmpty', })<ResultsHeadingProps>`
+    margin: ${({isEmpty}) => isEmpty ? `16px 0;` : `0 0 16px 0;`}
 `

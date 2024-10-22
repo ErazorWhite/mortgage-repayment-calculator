@@ -1,4 +1,4 @@
-import {MortgageData, MortgageType} from "../form/CalculatorForm/types.ts";
+import {MortgageData, MortgageType} from "../components/form/CalculatorForm/types.ts";
 
 export function mortgageCalc({term, rate, type, amount}: MortgageData) {
     const mortgageTermMonths = term * 12;

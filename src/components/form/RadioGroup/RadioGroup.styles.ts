@@ -30,7 +30,7 @@ export const RadioLabel = styled.label`
     color: var(--color-state-900);
     cursor: pointer;
     transition: var(--animation);
-    
+
     &::before {
         content: '';
         margin-right: 16px;
@@ -72,9 +72,3 @@ export const RadioInput = styled.input`
     }
 }
 `;
-
-
-
-
-
-
