@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import {typography} from "../../global/theme";
+import styled from 'styled-components';
+import {typography} from '../../global/theme';
 
 export const StyledButton = styled.button`
     ${typography.preset3};

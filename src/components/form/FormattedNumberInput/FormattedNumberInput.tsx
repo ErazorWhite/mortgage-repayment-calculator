@@ -1,9 +1,9 @@
-import {InputBox, StyledInput, TextLabel} from "./FormattedNumberInput.styled.ts";
-import {NumberFormatValues, NumericFormat} from "react-number-format";
-import {Control, Controller} from "react-hook-form";
-import {ValidationErrorStyled} from "../../ValidateError/ValidationErrorStyled.ts";
+import {InputBox, StyledInput, TextLabel} from './FormattedNumberInput.styled.ts';
+import {NumberFormatValues, NumericFormat} from 'react-number-format';
+import {Control, Controller} from 'react-hook-form';
+import {ValidationErrorStyled} from '../../ValidateError/ValidationErrorStyled.ts';
 
-export interface InputProps {
+export interface IInputProps {
     label: string;
     name: string;
     control: Control<any>;
@@ -11,7 +11,7 @@ export interface InputProps {
     suffix?: string
 }
 
-export const FormattedNumberInput = ({name, label, control, prefix, suffix}: InputProps) =>
+export const FormattedNumberInput = ({name, label, control, prefix, suffix}: IInputProps) =>
     (
         <Controller
             name={name}

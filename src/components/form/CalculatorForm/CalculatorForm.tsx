@@ -1,7 +1,7 @@
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {useCallback, useState} from 'react';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {MortgageData, MortgageType} from './types.ts';
+import {IMortgageData} from './types.ts';
 import {RadioGroup} from '../RadioGroup/RadioGroup.tsx';
 import {calculateMortgage} from '../../../utilities/calculateMortgage.ts';
 import {ClearButton, Form, FormHeader, FormThumb, FullInputSeparator, H1, HalfInputSeparator, InputsContainer} from './CalculatorForm.styled';
@@ -10,6 +10,7 @@ import {MortgageDataSchema} from '../../../utilities/validationSchemas';
 import {FormattedNumberInput} from '../FormattedNumberInput/FormattedNumberInput.tsx';
 import {CalculationResult} from '../../Results/CalculationResult/CalculationResult.tsx';
 import {EmptyResult} from '../../Results/EmptyResult/EmptyResult.tsx';
+import {MortgageType} from "../../../global/sharedData.ts";
 
 const radioOptions = [
     {label: MortgageType.Repayment, value: MortgageType.Repayment},
@@ -25,9 +26,9 @@ export const CalculatorForm = () => {
         handleSubmit,
         reset,
         formState: {errors}
-    } = useForm<MortgageData>({resolver: yupResolver(MortgageDataSchema), mode: 'onTouched'});
+    } = useForm<IMortgageData>({resolver: yupResolver(MortgageDataSchema), mode: 'onTouched'});
 
-    const onSubmit: SubmitHandler<MortgageData> = useCallback(({amount, term, rate, type}) => {
+    const onSubmit: SubmitHandler<IMortgageData> = useCallback(({amount, term, rate, type}) => {
 
         const {monthlyPayment, totalRepayment} = calculateMortgage({term, rate, type, amount});
 

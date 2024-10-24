@@ -1,7 +1,7 @@
-import styled, {css} from "styled-components";
-import {typography} from "../../../global/theme";
+import styled, {css} from 'styled-components';
+import {typography} from '../../../global/theme';
 
-interface InputBoxProps {
+interface IInputBoxProps {
     isInvalid?: boolean;
     isTouched?: boolean;
     'data-prefix'?: string;
@@ -16,7 +16,7 @@ export const TextLabel = styled.label`
     color: var(--color-state-700);
 `
 
-export const InputBox = styled.div.withConfig({shouldForwardProp: (prop) => prop !== 'isInvalid' && prop !== 'isTouched'})<InputBoxProps>`
+export const InputBox = styled.div.withConfig({shouldForwardProp: (prop) => !['isInvalid', 'isTouched'].includes(prop)})<IInputBoxProps>`
     display: flex;
     border: 1px solid var(--color-state-500);
     border-radius: 4px;

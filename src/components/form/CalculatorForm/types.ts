@@ -1,9 +1,6 @@
-export enum MortgageType {
-    Repayment = 'Repayment',
-    InterestOnly = 'Interest Only',
-}
+import {MortgageType} from "../../../global/sharedData.ts";
 
-export interface MortgageData {
+export interface IMortgageData {
     amount: number;
     term: number;
     rate: number;

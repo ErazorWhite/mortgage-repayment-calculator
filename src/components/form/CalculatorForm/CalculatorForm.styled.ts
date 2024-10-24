@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import {typography} from "../../../global/theme";
-import {DESKTOP_BP, MOBILE_BP, TABLET_BP} from "../../../global/breakpoints";
+import styled from 'styled-components';
+import {typography} from '../../../global/theme';
+import {DESKTOP_BP, MOBILE_BP, TABLET_BP} from '../../../global/breakpoints';
 
 export const FormThumb = styled.div`
     background-color: var(--color-white);

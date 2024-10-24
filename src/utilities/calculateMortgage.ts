@@ -1,6 +1,7 @@
-import {MortgageData, MortgageType} from '../components/form/CalculatorForm/types.ts';
+import {IMortgageData} from '../components/form/CalculatorForm/types.ts';
+import {MortgageType} from "../global/sharedData.ts";
 
-export function calculateMortgage({term, rate, type, amount}: MortgageData) {
+export function calculateMortgage({term, rate, type, amount}: IMortgageData) {
     const mortgageTermMonths = term * 12;
     const monthlyInterestRate = (rate / 100) / 12;
 

@@ -1,8 +1,8 @@
-import styled, {css} from "styled-components";
-import {TABLET_BP} from "../../../global/breakpoints.ts";
-import {typography} from "../../../global/theme.ts";
+import styled, {css} from 'styled-components';
+import {TABLET_BP} from '../../../global/breakpoints.ts';
+import {typography} from '../../../global/theme.ts';
 
-interface NumbersHeadingProps {
+interface INumbersHeadingProps {
     primary?: boolean;
 }
 
@@ -26,7 +26,7 @@ export const CalculationDetailsBox = styled.div`
     }
 }
 `
-export const CalculationValue = styled.span.withConfig({ shouldForwardProp: (prop) => prop !== 'primary', })<NumbersHeadingProps>`
+export const CalculationValue = styled.span.withConfig({ shouldForwardProp: (prop) => prop !== 'primary', })<INumbersHeadingProps>`
     overflow: scroll;
     display: block;
     ${({primary})=> primary ? css`
