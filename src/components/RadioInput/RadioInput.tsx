@@ -17,7 +17,7 @@ export const RadioInput = forwardRef(({
                                           onChange,
                                           onBlur,
                                           name
-                                      }: IRadioInput, ref: ForwardedRef<HTMLInputElement>) => (
+                                      }: IRadioInput, ref?: ForwardedRef<HTMLInputElement>) => (
     <>
         <StyledRadioInput
             type={type}
