@@ -27,7 +27,7 @@ export const CalculationDetailsBox = styled.div`
 }
 `
 export const CalculationValue = styled.span.withConfig({ shouldForwardProp: (prop) => prop !== 'primary', })<INumbersHeadingProps>`
-    overflow: scroll;
+    overflow: auto;
     display: block;
     ${({primary})=> primary ? css`
         ${typography.preset1};

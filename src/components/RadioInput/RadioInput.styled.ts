@@ -1,30 +1,30 @@
-import styled from "styled-components";
-import {typography} from "../../global/theme.ts";
+import styled from 'styled-components';
+import { typography } from '../../global/theme.ts';
 
 export const RadioLabel = styled.label`
-    ${typography.preset3};
-    display: flex;
-    align-items: center;
-    padding: 13px 16px;
-    border: 1px solid var(--color-state-700);
-    border-radius: 4px;
-    color: var(--color-state-900);
-    cursor: pointer;
-    transition: var(--animation);
+  ${typography.preset3};
+  display: flex;
+  align-items: center;
+  padding: 13px 16px;
+  border: 1px solid var(--color-state-700);
+  border-radius: 4px;
+  color: var(--color-state-900);
+  cursor: pointer;
+  transition: var(--animation-ease-in);
 
-    &::before {
-        content: '';
-        margin-right: 16px;
-        width: 20px;
-        height: 20px;
-        box-shadow: 0 0 0 2px var(--color-state-700);
-        border-radius: 50%;
-        transition: background-color var(--animation);
-    }
+  &::before {
+    content: '';
+    margin-right: 16px;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 0 2px var(--color-state-700);
+    border-radius: 50%;
+    transition: background-color var(--animation-ease-in);
+  }
 
-    &:hover {
-        border-color: var(--color-lime);
-    }
+  &:hover {
+    border-color: var(--color-lime);
+  }
 `;
 
 export const StyledRadioInput = styled.input`

@@ -28,7 +28,7 @@
     --color-black: black;
 
     /* Animation */
-    --animation: color 150ms ease-in, background-color 150ms ease-in, border-color 150ms ease-in;
+    --animation-ease-in: color 150ms ease-in, background-color 150ms ease-in, border-color 150ms ease-in;
 }
 
 body {
