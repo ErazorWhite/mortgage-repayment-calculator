@@ -16,7 +16,7 @@ This project is a mortgage repayment calculator built to closely match the provi
 
 Pay special attention to prefixes and suffixes in text input fields. You can easily customize their presence and/or position with react props
 
-```ts
+```tsx
 <TextInput name="amount" label="Mortgage Amount" prefix="£" control={control}/>
 ```
 The application adapts to the display size of your device.
@@ -82,3 +82,9 @@ Open http://localhost:3000 in your browser to view the web application.
 ## Implemented by
 
 [Oleksii Husak](https://www.linkedin.com/in/oleksii-husak/)
+
+## Special thanks to
+
+[Alex Fitiskin](https://github.com/afitiskin),
+[kpogodin](https://github.com/kpogodin),
+[Aleksei Lazev](https://github.com/NotAleksei)
